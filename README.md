@@ -20,7 +20,7 @@ Send one-way A2P SMS messages to your HubSpot contacts when CRM events occur, su
 - **Message Cleaning**: Strips emojis, hidden characters, and HTML before sending
 - **SMS Logging**: Full delivery logs with API response tracking
 - **Balance Monitoring**: Dashboard with real-time balance and send statistics
-- **Test Mode**: Send test messages without delivery or credit consumption
+- **Test Mode**: Test messages are queued but not delivered. Their credits are held until you delete them from the Sending Queue in your kwtsms.com account.
 - **Multilingual**: English and Arabic workflow labels and SMS content support
 - **Daily Sync**: Automatic balance, sender ID, and coverage synchronization
 

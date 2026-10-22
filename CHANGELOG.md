@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - Unreleased
 
+### Docs
+- Test mode: test messages are queued but not delivered; their credits are held until you delete them from the Sending Queue
+- ERR028 action key is now `wait_and_retry` (was `wait_15_seconds`): duplicate SMS protection is opt-in per account with a configurable window (10 seconds by default)
+
 ### Added
 - kwtSMS gateway integration (send, balance, senderid, coverage, validate)
 - HubSpot workflow action: "Send SMS via kwtSMS" with English and Arabic labels

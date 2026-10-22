@@ -40,7 +40,8 @@ const ERROR_SEVERITY = {
   ERR025: { severity: 'low', action: 'normalize_phone', retryable: false },
   ERR026: { severity: 'low', action: 'activate_country', retryable: false },
   ERR027: { severity: 'low', action: 'strip_html', retryable: false },
-  ERR028: { severity: 'medium', action: 'wait_15_seconds', retryable: true },
+  // 2026-10-22 15:36 +03: was 'wait_15_seconds'. ERR028 duplicate SMS protection is opt-in per account with its own window (10 s default), never a fixed 15 s. No in-repo consumer matches on this key.
+  ERR028: { severity: 'medium', action: 'wait_and_retry', retryable: true },
   ERR029: { severity: 'low', action: 'check_msg_id', retryable: false },
   ERR030: { severity: 'medium', action: 'delete_from_queue', retryable: false },
   ERR031: { severity: 'high', action: 'review_message_content', retryable: false },
