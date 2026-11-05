@@ -9,6 +9,8 @@
  */
 
 const { KwtSMS } = require('kwtsms');
+// 2026-11-05 14:59 +03: app token for the User-Agent, #939.
+const { APP_NAME } = require('../kwtsms/app-name');
 const { getDatabase } = require('../config/database');
 const { decrypt } = require('../config/encryption');
 const { updateBalance, updateSenderIds, updateCoverage } = require('../models/settings');
@@ -28,7 +30,7 @@ async function syncPortal(portalId, username, password) {
   const errors = [];
   let balance = null;
 
-  const sms = new KwtSMS(username, password, { testMode: false, logFile: '' });
+  const sms = new KwtSMS(username, password, { testMode: false, logFile: '', appName: APP_NAME }); // 2026-11-05 14:59 +03: identify the integration, #939
 
   // Sync balance
   try {

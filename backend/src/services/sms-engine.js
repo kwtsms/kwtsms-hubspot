@@ -23,6 +23,8 @@
  */
 
 const { KwtSMS } = require('kwtsms');
+// 2026-11-05 14:59 +03: app token for the User-Agent, #939.
+const { APP_NAME } = require('../kwtsms/app-name');
 const { verifyPhone, checkCoverage, deduplicateNumbers } = require('../kwtsms/verify');
 const { cleanMessage, getMessageInfo } = require('../kwtsms/clean');
 const { getErrorInfo, isBalanceError, isCriticalError } = require('../kwtsms/errors');
@@ -178,7 +180,8 @@ async function send(portalId, recipients, message, senderId, options = {}) {
   const sms = new KwtSMS(settings.kwtsms_username, settings.kwtsms_password, {
     senderId: senderId || settings.sender_id,
     testMode: settings.test_mode,
-    logFile: '' // disable file logging, we use our own
+    logFile: '', // disable file logging, we use our own
+    appName: APP_NAME // 2026-11-05 14:59 +03: identify the integration, #939
   });
 
   logger.info('sms-engine.send', `Sending to ${unique.length} recipient(s)`, {
@@ -287,7 +290,7 @@ async function send(portalId, recipients, message, senderId, options = {}) {
  * @returns {Promise<{ success: boolean, balance?: number, error?: string }>}
  */
 async function testGateway(username, password) {
-  const sms = new KwtSMS(username, password, { testMode: true, logFile: '' });
+  const sms = new KwtSMS(username, password, { testMode: true, logFile: '', appName: APP_NAME }); // 2026-11-05 14:59 +03: identify the integration, #939
   const [ok, balance, err] = await sms.verify();
 
   if (ok) {
@@ -306,7 +309,7 @@ async function testGateway(username, password) {
  * @returns {Promise<{ success: boolean, balance?: number, senderIds?: string[], error?: string }>}
  */
 async function loginAndSync(portalId, username, password) {
-  const sms = new KwtSMS(username, password, { testMode: true, logFile: '' });
+  const sms = new KwtSMS(username, password, { testMode: true, logFile: '', appName: APP_NAME }); // 2026-11-05 14:59 +03: identify the integration, #939
 
   // Verify credentials
   const [ok, balance, err] = await sms.verify();

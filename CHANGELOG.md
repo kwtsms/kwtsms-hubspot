@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ERR028 action key is now `wait_and_retry` (was `wait_15_seconds`): duplicate SMS protection is opt-in per account with a configurable window (10 seconds by default)
 
 ### Added
+- Requests to kwtSMS carry the integration name and version (no personal data) so kwtSMS can see which integrations are in use.
 - kwtSMS gateway integration (send, balance, senderid, coverage, validate)
 - HubSpot workflow action: "Send SMS via kwtSMS" with English and Arabic labels
 - CRM card: SMS panel on contact records with quick send and history

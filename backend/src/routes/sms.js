@@ -61,6 +61,8 @@ router.post('/test', async (req, res, next) => {
     }
 
     const { KwtSMS } = require('kwtsms');
+// 2026-11-05 14:59 +03: app token for the User-Agent, #939.
+const { APP_NAME } = require('../kwtsms/app-name');
     const { cleanMessage } = require('../kwtsms/clean');
     const { verifyPhone } = require('../kwtsms/verify');
 
@@ -72,7 +74,8 @@ router.post('/test', async (req, res, next) => {
     const sms = new KwtSMS(settings.kwtsms_username, settings.kwtsms_password, {
       senderId: settings.sender_id,
       testMode: true,
-      logFile: ''
+      logFile: '',
+      appName: APP_NAME // 2026-11-05 14:59 +03: identify the integration, #939
     });
 
     const cleaned = cleanMessage(message || 'kwtSMS HubSpot integration test message');
