@@ -223,7 +223,8 @@
         <h2>Test SMS</h2>
         <p style="font-size:0.85rem;color:var(--muted);margin-bottom:12px">Send a message to verify your gateway. Respects the Test Mode toggle above: if ON, message is not delivered; if OFF, message is sent live.</p>
         <div class="form-row">
-          <div class="form-group"><label>Phone Number</label><input type="text" id="test-phone" placeholder="96598765432"></div>
+          <!-- 2026-11-05 11:11 +03: placeholder 965XXXXXXXX replaces a sample mobile number that belongs to a real person, int-testnumber -->
+          <div class="form-group"><label>Phone Number</label><input type="text" id="test-phone" placeholder="965XXXXXXXX"></div>
           <div class="form-group"><label>Message</label><input type="text" id="test-message"></div>
         </div>
         <button class="btn btn-secondary" id="btn-test-sms">Send Test SMS</button>

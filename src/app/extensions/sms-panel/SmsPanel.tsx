@@ -140,7 +140,8 @@ function SmsPanel({ context, runServerless, sendAlert }: SmsPanelProps) {
             name="phone"
             value={phone}
             onChange={(val: string) => setPhone(val)}
-            placeholder="96598765432"
+            // 2026-11-05 11:11 +03: placeholder 965XXXXXXXX replaces a sample mobile number that belongs to a real person, int-testnumber
+            placeholder="965XXXXXXXX"
           />
           <TextArea
             label="Message"
