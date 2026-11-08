@@ -19,6 +19,7 @@ const { initDatabase } = require('./config/database');
 const { sanitizeMiddleware } = require('./middleware/sanitize');
 const { requirePortalId } = require('./middleware/auth');
 const { errorHandler } = require('./middleware/error-handler');
+const { settingsLimiter, smsLimiter } = require('./middleware/rate-limit'); // 2026-11-08 16:05 +03: hubspot-rate-limit
 const { startDailySync } = require('./jobs/daily-sync');
 
 const app = express();
@@ -75,12 +76,12 @@ app.use('/api/oauth', require('./routes/oauth'));
 app.use('/api/workflow-action', require('./routes/workflow-action'));
 
 // Protected routes (portal ID in URL path, OAuth token check in production)
-app.use('/api/settings/:portalId', requirePortalId, require('./routes/settings'));
+app.use('/api/settings/:portalId', requirePortalId, settingsLimiter, require('./routes/settings')); // 2026-11-08 16:05 +03: limited per portal
 app.use('/api/dashboard/:portalId', requirePortalId, require('./routes/dashboard'));
 app.use('/api/logs/:portalId', requirePortalId, require('./routes/logs'));
 
 // SMS routes (portal ID from header)
-app.use('/api/sms', requirePortalId, require('./routes/sms'));
+app.use('/api/sms', requirePortalId, smsLimiter, require('./routes/sms')); // 2026-11-08 16:05 +03: limited per portal
 
 // Global error handler (must be last)
 app.use(errorHandler);
