@@ -81,7 +81,11 @@
       background: linear-gradient(180deg, var(--primary-light) 0%, #fff 100%);
     }
     .hero-logo {
-      height: 80px;
+      /* 2026-11-18 16:39 +03: Boss 1338 overflow sweep: fixed 80px height made the logo wider than phones (page 465px at 390); cap height, keep ratio, never wider than the screen */
+      height: auto;
+      max-height: 80px;
+      width: auto;
+      max-width: 100%;
       margin-bottom: 28px;
       animation: fadeUp 0.5s ease both;
     }
