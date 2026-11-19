@@ -9,6 +9,8 @@
 
 SMS notifications for HubSpot CRM powered by [kwtSMS](https://www.kwtsms.com) gateway.
 
+All kwtSMS integrations: [kwtsms.com/integrations](https://www.kwtsms.com/integrations/)
+
 Send one-way A2P SMS messages to your HubSpot contacts when CRM events occur, such as deal stage changes, new contacts, or ticket updates.
 
 ## Features
