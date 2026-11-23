@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme-header-dark.png">
+  <img alt="kwtSMS for HubSpot" src=".github/assets/readme-header-light.png">
+</picture>
+
 # kwtSMS for HubSpot
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
